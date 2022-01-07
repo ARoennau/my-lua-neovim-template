@@ -31,7 +31,7 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
-	return "Go Giants!!!!"
+	return "Hood's Breath"
 end
 
 dashboard.section.footer.val = footer()
