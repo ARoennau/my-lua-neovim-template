@@ -196,5 +196,23 @@ local mappings = {
   },
 }
 
+local g_opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "g",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
+
+local g_mappings = {
+  ["d"] = { "<cmd> lua vim.lsp.buf.definition()<cr>", "Go to definition"},
+  ["D"] = { "<cmd> lua vim.lsp.buf.declaration()<cr>", "Go to declaration"},
+  ["i"] = { "<cmd> lua vim.lsp.buf.implementation()<cr>", "Go to implementation"},
+  ["r"] = { "<cmd> lua vim.lsp.buf.references()<cr>", "Go to references"},
+  ["y"] = { "<cmd> lua vim.lsp.buf.type_definition()<cr>", "Go to type definition"},
+}
+
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register(g_mappings, g_opts)

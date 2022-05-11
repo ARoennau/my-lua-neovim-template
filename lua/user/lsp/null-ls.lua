@@ -17,7 +17,9 @@ null_ls.setup({
   end,
 	sources = {
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote" } }),
-		formatting.black.with({ extra_args = { "--fast" } }),
+		-- formatting.black.with({ extra_args = { "--fast" } }),
+    formatting.autopep8,
+    diagnostics.eslint_d,
 		formatting.stylua,
     -- diagnostics.flake8
 	},

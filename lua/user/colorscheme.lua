@@ -3,9 +3,9 @@ if not status_ok then
   return
 end
 
-nightfox.setup {
-  transparent = true
-}
+-- nightfox.setup {
+--   transparent = true
+-- }
 
 vim.cmd [[
 try
