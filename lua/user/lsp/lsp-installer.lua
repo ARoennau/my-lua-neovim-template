@@ -10,6 +10,8 @@ end
 
 local handlers = require("user.lsp.handlers")
 
+lsp_installer.setup{}
+
 lspconfig.tsserver.setup{
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
@@ -35,7 +37,14 @@ lspconfig.jsonls.setup{
   capabilities = handlers.capabilities,
 }
 
+lspconfig.volar.setup{
+  on_attach = handlers.on_attach,
+  capabilities = handlers.capabilities,
+}
+
 lspconfig.sumneko_lua.setup{
+  on_attach = handlers.on_attach,
+  capabilities = handlers.capabilities,
 	settings = {
 		Lua = {
 			diagnostics = {
@@ -49,8 +58,6 @@ lspconfig.sumneko_lua.setup{
 			},
 		},
 	},
-  on_attach = handlers.on_attach,
-  capabilities = handlers.capabilities,
 }
 
 
