@@ -1,63 +1,68 @@
 local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
 if not status_ok then
-	return
+  return
 end
 
 local config_status_ok, lspconfig = pcall(require, "lspconfig")
 if not config_status_ok then
-	return
+  return
 end
 
 local handlers = require("user.lsp.handlers")
 
-lsp_installer.setup{}
+lsp_installer.setup {}
 
-lspconfig.tsserver.setup{
+lspconfig.tsserver.setup {
+  on_attach = handlers.on_attach,
+  capabilities = handlers.capabilities,
+  init_options = {
+    preferences = {
+      importModuleSpecifierPreference = 'relative',
+    },
+  },
+}
+
+lspconfig.bashls.setup {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
 }
 
-lspconfig.bashls.setup{
+lspconfig.gopls.setup {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
 }
 
-lspconfig.gopls.setup{
+lspconfig.pyright.setup {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
 }
 
-lspconfig.pyright.setup{
+lspconfig.jsonls.setup {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
 }
 
-lspconfig.jsonls.setup{
+lspconfig.volar.setup {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
 }
 
-lspconfig.volar.setup{
+lspconfig.sumneko_lua.setup {
   on_attach = handlers.on_attach,
   capabilities = handlers.capabilities,
-}
-
-lspconfig.sumneko_lua.setup{
-  on_attach = handlers.on_attach,
-  capabilities = handlers.capabilities,
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
-				},
-			},
-		},
-	},
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+          [vim.fn.stdpath("config") .. "/lua"] = true,
+        },
+      },
+    },
+  },
 }
 
 
@@ -83,4 +88,3 @@ lspconfig.sumneko_lua.setup{
 -- 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- 	server:setup(opts)
 -- end)
-
