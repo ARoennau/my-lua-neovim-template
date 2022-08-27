@@ -23,6 +23,7 @@ vim.cmd [[
   augroup end
 ]]
 
+
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
@@ -46,10 +47,10 @@ return packer.startup(function(use)
   use "numToStr/Comment.nvim" -- Easily comment stuff
   use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
-  use "akinsho/bufferline.nvim"
+  use { "akinsho/bufferline.nvim", tag = "v2.*" }
   use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
-  use "akinsho/toggleterm.nvim"
+  use { "akinsho/toggleterm.nvim", tag = 'v2.*' }
   use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim"
   use "lukas-reineke/indent-blankline.nvim"
@@ -60,13 +61,30 @@ return packer.startup(function(use)
   use 'vim-test/vim-test'
   use 'rcarriga/nvim-notify'
   use 'nvim-pack/nvim-spectre'
-  use "blackCauldron7/surround.nvim"
+  use "kylechui/nvim-surround"
   use "folke/todo-comments.nvim"
+  use { "vimwiki/vimwiki",
+    config = function()
+      vim.g.vimwiki_list = {
+        {
+          path = '~/vimwiki',
+          syntax = 'markdown',
+          ext = '.md',
+        }
+      }
+      vim.g.vimwiki_ext2syntax = {
+        ['.md'] = 'markdown',
+        ['.markdown'] = 'markdown',
+        ['.mdown'] = 'markdown',
+      }
+    end
+  }
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
   use 'EdenEast/nightfox.nvim'
+  use 'ellisonleao/gruvbox.nvim'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -88,7 +106,7 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Treesitter
   use {
