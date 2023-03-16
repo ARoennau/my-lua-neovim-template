@@ -49,6 +49,7 @@ return packer.startup(function(use)
   use "kyazdani42/nvim-tree.lua"
   use { "akinsho/bufferline.nvim", tag = "v2.*" }
   use "moll/vim-bbye"
+  use { "williamboman/mason.nvim" }
   use "nvim-lualine/lualine.nvim"
   use { "akinsho/toggleterm.nvim", tag = 'v2.*' }
   use "ahmedkhalf/project.nvim"
@@ -63,6 +64,7 @@ return packer.startup(function(use)
   use 'nvim-pack/nvim-spectre'
   use "kylechui/nvim-surround"
   use "folke/todo-comments.nvim"
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, }) 
   use { "vimwiki/vimwiki",
     config = function()
       vim.g.vimwiki_list = {
@@ -119,6 +121,7 @@ return packer.startup(function(use)
   -- Git
   use "lewis6991/gitsigns.nvim"
   use "tpope/vim-fugitive"
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()

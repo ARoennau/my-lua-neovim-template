@@ -192,6 +192,7 @@ local mappings = {
   j = {
     name = "Test",
     s = { "<cmd>TestNearest<cr>", "Run single test" },
+    l = { "<cmd>TestLast<cr>", "Test Last" },
     f = { "<cmd>TestFile<cr>", "Test file" },
   },
 }
@@ -206,11 +207,11 @@ local g_opts = {
 }
 
 local g_mappings = {
-  ["d"] = { "<cmd> lua vim.lsp.buf.definition()<cr>", "Go to definition"},
-  ["D"] = { "<cmd> lua vim.lsp.buf.declaration()<cr>", "Go to declaration"},
-  ["i"] = { "<cmd> lua vim.lsp.buf.implementation()<cr>", "Go to implementation"},
-  ["r"] = { "<cmd> lua vim.lsp.buf.references()<cr>", "Go to references"},
-  ["y"] = { "<cmd> lua vim.lsp.buf.type_definition()<cr>", "Go to type definition"},
+  ["d"] = { "<cmd> lua vim.lsp.buf.definition()<cr>", "Go to definition" },
+  ["D"] = { "<cmd> lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
+  ["i"] = { "<cmd> lua vim.lsp.buf.implementation()<cr>", "Go to implementation" },
+  ["r"] = { "<cmd> lua vim.lsp.buf.references()<cr>", "Go to references" },
+  ["y"] = { "<cmd> lua vim.lsp.buf.type_definition()<cr>", "Go to type definition" },
 }
 
 which_key.setup(setup)
