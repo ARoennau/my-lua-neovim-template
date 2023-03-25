@@ -28,8 +28,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Commands
 keymap("n", "<C-n>", ":nohlsearch<CR>", opts)
 keymap("n", "<C-p>", ":Telescope find_files<CR>", opts)
-keymap("n", "]g", ":lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-keymap("n", "[g", ":lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+keymap("n", "]g", ":lua vim.diagnostic.goto_next()<CR>", opts)
+keymap("n", "[g", ":lua vim.diagnostic.goto_prev()<CR>", opts)
 
 
 -- Resize with arrows
